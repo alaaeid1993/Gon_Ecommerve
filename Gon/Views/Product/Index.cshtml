@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Gon.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product List</h1>
+
+<p>
+    <a asp-action="Create">Add Product</a>
+</p>
+<table class="table table-data2" style="text-align:center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Fillter)
+            </th>
+
+            <th>
+                Category
+            </th>
+            <th>
+                Option
+            </th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+@foreach (var item in Model) {
+        <tr  class="tr-shadow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td  class="desc">
+               $ @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Fillter)
+            </td>
+
+            <td>
+                <span class="status--process">
+                @Html.DisplayFor(modelItem => item.Cat.Name)
+                </span>
+            </td>
+
+            <td>
+                <div class="table-data-feature">
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="zmdi zmdi-edit"style="color:blue" ></i></a> 
+                    </button>
+
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="Details">
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="zmdi zmdi-more"style="color:green"></i></a> 
+                    </button>
+
+                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="dele()">
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="zmdi zmdi-delete" style="color:red"></i></a>
+                    </button>
+                </div>       
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

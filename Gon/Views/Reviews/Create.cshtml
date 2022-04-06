@@ -1,0 +1,95 @@
+﻿@model Gon.Models.Review
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<!------------------------------------------------------------------------------------->
+<section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row" data-aos="fade-in" style="background-color:#fff">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, 6 october City, Egypt</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>alaadev22@gmail.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+2 01000194360</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d1768331.2338779555!2d31.235199999999995!3d30.043400000000023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d29.311496499999997!2d30.8384088!4m5!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center%20157%20William%20St%20New%20York%2C%20NY%2010038%20United%20States!3m2!1d40.710058599999996!2d-74.0061377!5e0!3m2!1sar!2seg!4v1649005877668!5m2!1sar!2seg" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+          </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+              <!------------------------------------------------------------------------------------------->
+            <form asp-action="Create" method="post" class="jj-email-form">
+
+              <div class="row">
+                  <div class="form-group col-md-6">
+                      <label asp-for="Name" >Your Name</label>
+                      <input type="text" asp-for="Name" class="form-control" id="Name" required>
+                      <span asp-validation-for="Name" class="text-danger"></span>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label asp-for="Email">Your Email</label>
+                      <input type="email" asp-for="Email" class="form-control" id="Email" required>
+                       <span asp-validation-for="Email" class="text-danger"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input type="text" class="form-control" asp-for="Subject" id="Subject" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label  asp-for="Message">Message</label>
+                    <textarea asp-for="Message" class="form-control" name="message" rows="10" required></textarea>
+                  </div>
+
+                  <div class="text-center">
+                     <button onclick="msg()"  type="submit" style="  background: #149ddd;
+                          border: 0;
+                          padding: 10px 24px;
+                          color: #fff;
+                          transition: 0.4s;
+                          border-radius: 4px;">Send Message</button>
+                  </div>
+               </div>
+            </form>
+
+              <!------------------------------------------------------------------------------------------->
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,4 +1,5 @@
-﻿using Gon.Models;
+﻿using Gon.Data;
+using Gon.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,16 +12,18 @@ namespace Gon.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        Gon__Context db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(Gon__Context _db)
         {
-            _logger = logger;
+            db = _db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Product> pro = db.Products.ToList();
+            ViewData["cate"] = db.Categories.ToList();
+            return View(pro);
         }
 
         public IActionResult Privacy()
@@ -33,5 +36,13 @@ namespace Gon.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult dashboard()
+        {
+            ViewData["dd"] = db.Products.Count().ToString();
+            List<Product> pro = db.Products.ToList();
+            return View(pro);
+        }
+
     }
 }
